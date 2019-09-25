@@ -19,9 +19,13 @@ class Ball:
     def __init__(self, position_x, position_y, radius, color):
 
         # Take the parameters of the init function above, and create instance variables out of them.
+        # Sets the x postion of the ball to a variable
         self.position_x = position_x
+        # Sets the y postion of the ball to a variable
         self.position_y = position_y
+        # Sets the radius of the ball to a variable
         self.radius = radius
+        # Sets the color of the ball to a variable
         self.color = color
 
     def draw(self):
@@ -40,25 +44,32 @@ class MyGame(arcade.Window):
         # So we just see our object, not the pointer.
         self.set_mouse_visible(False)
 
-        arcade.set_background_color(arcade.color.ASH_GREY)
+        # sets the background color to grey
+        arcade.set_background_color(arcade.color.ASH_GREY) 
 
         # Create our ball
         self.ball = Ball(50, 50, 15, arcade.color.AUBURN)
-
+        
     def on_draw(self):
         """ Called whenever we need to draw the window. """
+        # Gets rid of the ball at the old location
         arcade.start_render()
+        # Draws the Ball
         self.ball.draw()
 
     def on_mouse_motion(self, x, y, dx, dy):
         """ Called to update our objects. Happens approximately 60 times per second."""
+        # sets ball position to mouse position x
         self.ball.position_x = x
+        # sets ball position to mouse position y
         self.ball.position_y = y
 
     def on_mouse_press(self, x, y, button, modifiers):
         """
         Called when the user presses a mouse button.
         """
+        # Prints a message when you click left mouse button, and also changes the color of the ball to black
+        
         print(f"You clicked button number: {button}")
         if button == arcade.MOUSE_BUTTON_LEFT:
             self.ball.color = arcade.color.BLACK
@@ -67,6 +78,7 @@ class MyGame(arcade.Window):
         """
         Called when a user releases a mouse button.
         """
+        # changes the color of the ball back to red
         if button == arcade.MOUSE_BUTTON_LEFT:
             self.ball.color = arcade.color.AUBURN
 
